@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.dao.NumberMapper">
+  <resultMap id="BaseResultMap" type="com.qfedu.pojo.Number">
+    <id column="n_id" jdbcType="INTEGER" property="nId" />
+    <result column="man" jdbcType="INTEGER" property="man" />
+    <result column="woman" jdbcType="INTEGER" property="woman" />
+    <result column="date" jdbcType="DATE" property="date" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    n_id, man, woman, date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from number
+    where n_id = #{nId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from number
+    where n_id = #{nId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qfedu.pojo.Number">
+    insert into number (n_id, man, woman, 
+      date)
+    values (#{nId,jdbcType=INTEGER}, #{man,jdbcType=INTEGER}, #{woman,jdbcType=INTEGER}, 
+      #{date,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qfedu.pojo.Number">
+    insert into number
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="nId != null">
+        n_id,
+      </if>
+      <if test="man != null">
+        man,
+      </if>
+      <if test="woman != null">
+        woman,
+      </if>
+      <if test="date != null">
+        date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="nId != null">
+        #{nId,jdbcType=INTEGER},
+      </if>
+      <if test="man != null">
+        #{man,jdbcType=INTEGER},
+      </if>
+      <if test="woman != null">
+        #{woman,jdbcType=INTEGER},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qfedu.pojo.Number">
+    update number
+    <set>
+      <if test="man != null">
+        man = #{man,jdbcType=INTEGER},
+      </if>
+      <if test="woman != null">
+        woman = #{woman,jdbcType=INTEGER},
+      </if>
+      <if test="date != null">
+        date = #{date,jdbcType=DATE},
+      </if>
+    </set>
+    where n_id = #{nId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qfedu.pojo.Number">
+    update number
+    set man = #{man,jdbcType=INTEGER},
+      woman = #{woman,jdbcType=INTEGER},
+      date = #{date,jdbcType=DATE}
+    where n_id = #{nId,jdbcType=INTEGER}
+  </update>
+</mapper>
