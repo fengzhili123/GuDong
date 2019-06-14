@@ -2,6 +2,8 @@ package com.qfedu.dao;
 
 import com.qfedu.pojo.News;
 
+import java.util.List;
+
 public interface NewsMapper {
     int deleteByPrimaryKey(Integer newsId);
 
@@ -14,4 +16,6 @@ public interface NewsMapper {
     int updateByPrimaryKeySelective(News record);
 
     int updateByPrimaryKey(News record);
+
+    List<News> findAll();
 }

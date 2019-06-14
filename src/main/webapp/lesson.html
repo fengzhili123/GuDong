@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>咕咚游泳</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/lesson.css">
+    <script src="js/jquery-1.12.2.min.js" type="application/javascript"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="js/jquery.singlePageNav.min.js" type="application/javascript"></script>
+    <script src="js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="layui/layui.js" type="application/javascript"></script>
+    <script src="https://cdn.bootcss.com/wow/1.1.2/wow.js"></script>
+    <script src="js/main.js" type="application/javascript"></script>
+    <script src="js/coach.js" type="application/javascript"></script>
+    <script src="js/lesson.js" type="application/javascript"></script>
+    <script src="js/vue.js"></script>
+</head>
+<style type="text/css">
+    .carousel-inner img {
+        width: 100%;
+    }
+
+    button {
+        display: none;
+    }
+</style>
+<body>
+<!--导航-->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <!--小屏幕导航按纽和logo-->
+        <div class="navbar-header">
+            <button class="navbar-toggle">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <img src="image/logo.jpg" class="img-responsive img-logo">
+        </div>
+
+        <!--导航-->
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right" id="nav-home">
+                <li><a href="index.html">首页</a></li>
+                <li class="active"><a href="index.html">游泳培训</a></li>
+                <li><a href="#adult">成人游泳</a></li>
+                <li><a href="#child">少儿游泳</a></li>
+                <li><a href="#baby">幼儿游泳</a></li>
+                <li><a href="#" id="denglu" onclick="login()">登录 | 注册</a></li>
+                <li id="welUser" style="display: none"><a href="#">你好，{{user.username}}</a></li>
+                <li id="tuichu" style="display: none"><a href="#"><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;退出</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--导航-->
+<section id="adult" style="margin-top: 70px; height: auto">
+    <div class="container wow flipInY ">
+        <div class="row">
+            <div class="col-md-12"
+                 style="background: url('image/adult-bg.png');background-size: cover; height: 262px; margin-bottom: 10px"></div>
+            <div id="adultLesson">
+                <div v-for="lesson in lessons">
+                    <div class="col-md-4">
+                        <h1>{{lesson.lName}}</h1>
+                        <p>开课时间:&nbsp;&nbsp; {{lesson.lDate}}</p>
+                        <p>价钱:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{lesson.lPrice}}元</p>
+                        <p>授课老师:&nbsp;&nbsp;{{lesson.cName}}</p>
+                        <button class="btn btn-default">立即购买</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="child" style="margin-top: 70px; height: auto">
+    <div class="container wow flipInY ">
+        <div class="row">
+            <div class="col-md-12"
+                 style="background: url('image/child-bg.png');background-size: cover; height: 262px; margin-bottom: 10px"></div>
+            <div id="childLesson">
+
+                <div v-for="lesson in lessons">
+                    <div class="col-md-4">
+                        <h1>{{lesson.lName}}</h1>
+                        <p>开课时间:&nbsp;&nbsp; {{lesson.lDate}}</p>
+                        <p>价钱:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{lesson.lPrice}}元</p>
+                        <p>授课老师:&nbsp;&nbsp;{{lesson.cName}}</p>
+                        <button class="btn btn-default">立即购买</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="baby" style="margin-top: 70px; height: auto">
+    <div class="container wow flipInY ">
+        <div class="row">
+            <div class="col-md-12"
+                 style="background: url('image/baby-bg.png');background-size: cover; height: 262px; margin-bottom: 10px"></div>
+            <div id="babyLesson">
+                <div v-for="lesson in lessons">
+                    <div class="col-md-6">
+                        <h1>{{lesson.lName}}</h1>
+                        <p>开课时间:&nbsp;&nbsp; {{lesson.lDate}}</p>
+                        <p>价钱:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{lesson.lPrice}}元</p>
+                        <p>授课老师:&nbsp;&nbsp;{{lesson.cName}}</p>
+                        <button class="btn btn-default">立即购买</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--footer-->
+<footer>
+    <div class="container-fluid"></div>
+</footer>
+<!--footer-->
+<script>
+    //vue
+    var welUser = new Vue({
+        el: "#welUser",
+        data: {
+            seen: false,
+            user: {}
+        }
+    });
+    var adultLesson = new Vue({
+        el: "#adultLesson",
+        data: {
+            lessons: {}
+        }
+    });
+    var childLesson = new Vue({
+        el: "#childLesson",
+        data: {
+            lessons: {}
+        }
+    });
+    var babyLesson = new Vue({
+        el: "#babyLesson",
+        data: {
+            lessons: {}
+        }
+    });
+
+    $(function () {
+        loadData();
+        adultAjax();
+        childAjax();
+        babyAjax();
+        welcome();
+    });
+    $("li").click(function () {
+        window.location.href = "index.html"
+    });
+
+    $(document).on('click', '.btn-default', function () {
+        if (welUser.user.username == null) {
+            login();
+        } else {
+            alert("购买成功")
+        }
+    });
+
+
+</script>
+<form class="layui-form" id="formLogin" style="display: none" onsubmit="return false">
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户名</label>
+        <div class="layui-input-inline">
+            <input type="text" name="username" required lay-verify="required" placeholder="请输入用户名" autocomplete="off"
+                   class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="margin-bottom: 10px">密码框</label>
+        <div class="layui-input-inline">
+            <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off"
+                   class="layui-input">
+        </div>
+        <div class="layui-form-mid layui-word-aux"></div>
+    </div>
+    <div class="layui-form-item" style="margin: 10px">
+        <div class="layui-input-block" style=" margin-left: 65px; margin-bottom: 10px">
+            <button class="layui-btn" lay-submit lay-filter="formDemo" onclick="javascript:login1()">立即登录</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+
+        </div>
+        <div class="col-md-6" style="text-align: center"><a href="javascript:register()">注册</a></div>
+        <div class="col-md-6"><a href="" style="text-align: center">忘记密码？</a></div>
+    </div>
+</form>
+<form class="layui-form" id="formRegister" style="display: none" onsubmit="return false;">
+    <div class="layui-form-item">
+        <label class="layui-form-label">注册用户名</label>
+        <div class="layui-input-inline">
+            <input type="text" name="username" required lay-verify="required" placeholder="请输入用户名" autocomplete="off"
+                   class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="margin-bottom: 10px">密码</label>
+        <div class="layui-input-inline">
+            <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off"
+                   class="layui-input">
+        </div>
+        <div class="layui-form-mid layui-word-aux"></div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="margin-bottom: 10px">确认密码</label>
+        <div class="layui-input-inline">
+            <input type="password" name="repassword" required lay-verify="required" placeholder="请输入密码"
+                   autocomplete="off"
+                   class="layui-input">
+        </div>
+        <div class="layui-form-mid layui-word-aux"></div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="margin-bottom: 10px">手机号</label>
+        <div class="layui-input-inline">
+            <input type="text" name="phone" required lay-verify="required" placeholder="请输入手机号" autocomplete="off"
+                   class="layui-input">
+        </div>
+        <div class="layui-form-mid layui-word-aux"></div>
+    </div>
+    <div class="layui-form-item" style="margin: 10px">
+        <div class="layui-input-block" style=" margin-left: 65px; margin-bottom: 10px">
+            <button class="layui-btn" lay-submit lay-filter="formDemo" onclick="register1()">立即注册</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>

@@ -10,6 +10,15 @@ public class Coach {
     private String cExperience;
 
     private String cType;
+    private String cUrl;
+
+    public String getcUrl() {
+        return cUrl;
+    }
+
+    public void setcUrl(String cUrl) {
+        this.cUrl = cUrl;
+    }
 
     public Integer getcId() {
         return cId;

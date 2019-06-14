@@ -2,6 +2,9 @@ package com.qfedu.dao;
 
 import com.qfedu.pojo.Number;
 
+import java.util.Date;
+import java.util.List;
+
 public interface NumberMapper {
     int deleteByPrimaryKey(Integer nId);
 
@@ -14,4 +17,6 @@ public interface NumberMapper {
     int updateByPrimaryKeySelective(Number record);
 
     int updateByPrimaryKey(Number record);
+
+    List<Number> selectByDay(String day);
 }

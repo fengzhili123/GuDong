@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-config.dtd">
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <!-- 主配置文件 -->
 <configuration>
-<!-- mybatis中的配置有顺序要求，比如settings配置要放在typeAliases配置的前面 -->
-	<!-- 参数设置 -->
-	<settings>
-	    <!-- 启用懒加载，必须按照下面方式配置 -->
-		<setting name="lazyLoadingEnabled" value="true"/>
-		<!-- 将积极加载改为消极加载即按需加载。必须写,且为false才会懒加载 -->  
-		<setting name="aggressiveLazyLoading" value="false"/>
-		
-		<!-- 1 开启二级缓存 -->
-		<setting name="cacheEnabled" value="true"/>
-		<!-- 打印mybatis的sql语句 使用log4j打印日志-->
-		<setting name="logImpl" value="LOG4J"/>
-		<!-- 字段的下划线转驼峰方式 -->
-		<setting name="mapUnderscoreToCamelCase" value="true"/>
-	</settings>
+    <!-- mybatis中的配置有顺序要求，比如settings配置要放在typeAliases配置的前面 -->
+    <!-- 参数设置 -->
+    <settings>
+        <!-- 启用懒加载，必须按照下面方式配置 -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!-- 将积极加载改为消极加载即按需加载。必须写,且为false才会懒加载 -->
+        <setting name="aggressiveLazyLoading" value="false"/>
 
-	<!-- 定义别名 
-		type 设置定义别名的类  包名+类名的形式
-		alias 别名
-	-->
-	<typeAliases>
-		<typeAlias type="com.qfedu.pojo.User" alias="User"></typeAlias>
-	</typeAliases>
+        <!-- 1 开启二级缓存 -->
+        <setting name="cacheEnabled" value="true"/>
+        <!-- 打印mybatis的sql语句 使用log4j打印日志-->
+        <setting name="logImpl" value="LOG4J"/>
+        <!-- 字段的下划线转驼峰方式 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
 
-	<plugins>
-    	<!-- com.github.pagehelper为PageHelper类所在包名 -->
-    	<plugin interceptor="com.github.pagehelper.PageInterceptor">
-       	 <!-- 数据库方言，支持哪种数据库 -->
-       		 <property name="helperDialect" value="mysql"/>
-		</plugin>
-	</plugins>
-	
+    <!-- 定义别名
+        type 设置定义别名的类  包名+类名的形式
+        alias 别名
+    -->
+    <typeAliases>
+        <typeAlias type="com.qfedu.pojo.User" alias="User"></typeAlias>
+    </typeAliases>
+
+    <plugins>
+        <!-- com.github.pagehelper为PageHelper类所在包名 -->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!-- 数据库方言，支持哪种数据库 -->
+            <property name="helperDialect" value="mysql"/>
+        </plugin>
+    </plugins>
+
 </configuration>
 

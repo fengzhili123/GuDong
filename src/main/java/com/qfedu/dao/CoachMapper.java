@@ -1,6 +1,9 @@
 package com.qfedu.dao;
 
 import com.qfedu.pojo.Coach;
+import com.qfedu.vo.VCoach;
+
+import java.util.List;
 
 public interface CoachMapper {
     int deleteByPrimaryKey(Integer cId);
@@ -14,4 +17,10 @@ public interface CoachMapper {
     int updateByPrimaryKeySelective(Coach record);
 
     int updateByPrimaryKey(Coach record);
+
+    List<VCoach> findAll();
+
+    List<VCoach> findLimit();
+
+    Coach findByName(String cName);
 }

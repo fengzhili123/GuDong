@@ -1,0 +1,93 @@
+#adult .col-md-4 {
+    background-color: #197AD7;
+    height: 258px;;
+    transition: all 0.3s;
+    padding: 10px 10px;
+    color: #ffffff;
+}
+
+#adult .btn, #child .btn, #baby .btn {
+    background: transparent;
+    border: 1px solid #ffffff;
+    border-radius: 0px;
+    color: #ffffff;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    padding: 8px 40px;
+    margin-left: 80px;
+    transition: all 0.3s;
+}
+
+#adult .btn:hover {
+    background: #4cd5b6;
+    color: #fff;
+}
+
+#child .btn:hover {
+    background: #4cd5b6;
+    color: #fff;
+}
+
+#baby .btn:hover {
+    background: #4cd5b6;
+    color: #fff;
+}
+
+#adult h1 {
+    text-align: center;
+    margin: 30px;
+}
+
+#adult p {
+    font-size: 20px;
+    line-height: 20px;
+}
+
+#child h1 {
+    text-align: center;
+    margin: 30px;
+}
+
+#child p {
+    font-size: 20px;
+    line-height: 20px;
+}
+
+#baby h1 {
+    text-align: center;
+    margin: 30px;
+}
+
+#baby p {
+    font-size: 20px;
+    line-height: 20px;
+}
+
+#adult .col-md-4:hover {
+    background-color: #0560B7;
+}
+
+#child .col-md-4 {
+    background-color: #FAA800;
+    height: 258px;;
+    transition: all 0.3s;
+    padding: 10px 10px;
+    color: #ffffff;
+}
+
+#child .col-md-4:hover {
+    background-color: #FA8900;
+}
+
+#baby .col-md-6 {
+    background-color: #D113FE;
+    height: 258px;;
+    transition: all 0.3s;
+    padding: 10px 10px;
+    color: #ffffff;
+    margin-bottom: 30px;
+}
+
+#baby .col-md-6:hover {
+    background-color: #B522D8;
+}

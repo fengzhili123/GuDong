@@ -10,17 +10,24 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserMapper dao ;
+    private UserMapper dao;
 
     @Override
-    public User login(String name,String password) {
+    public User login(String name, String password) {
+        System.out.println("------------------------------------------");
+        System.out.println(name);
         User user = dao.findByName(name);
-        if (user != null){
+        if (user != null) {
             String p = user.getPassword();
-            if (p.equals(password)){
+            if (p.equals(password)) {
                 return user;
             }
         }
         return null;
+    }
+
+    @Override
+    public void register(User user) {
+        dao.insertSelective(user);
     }
 }
