@@ -147,6 +147,12 @@
             <version>5.1.39</version>
         </dependency>
     </dependencies>
+    <distributionManagement>
+        <repository>
+            <id>naxusSnapshot</id>
+            <url>http://192.168.0.192:8081/nexus/content/repositories/snapshots/</url>
+        </repository>
+    </distributionManagement>
     <build>
         <finalName>webmaven1</finalName>
         <plugins>
