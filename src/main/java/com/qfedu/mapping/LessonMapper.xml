@@ -1,82 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qfedu.dao.LessonMapper">
-  <resultMap id="BaseResultMap" type="com.qfedu.pojo.Lesson">
-    <id column="l_id" jdbcType="INTEGER" property="lId" />
-    <result column="l_type" jdbcType="INTEGER" property="lType" />
-    <result column="l_name" jdbcType="VARCHAR" property="lName" />
-    <result column="l_date" jdbcType="DATE" property="lDate" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    l_id, l_type, l_name, l_date
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from lesson
-    where l_id = #{lId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from lesson
-    where l_id = #{lId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.qfedu.pojo.Lesson">
-    insert into lesson (l_id, l_type, l_name, 
-      l_date)
-    values (#{lId,jdbcType=INTEGER}, #{lType,jdbcType=INTEGER}, #{lName,jdbcType=VARCHAR}, 
-      #{lDate,jdbcType=DATE})
-  </insert>
-  <insert id="insertSelective" parameterType="com.qfedu.pojo.Lesson">
-    insert into lesson
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="lId != null">
-        l_id,
-      </if>
-      <if test="lType != null">
-        l_type,
-      </if>
-      <if test="lName != null">
-        l_name,
-      </if>
-      <if test="lDate != null">
-        l_date,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="lId != null">
-        #{lId,jdbcType=INTEGER},
-      </if>
-      <if test="lType != null">
-        #{lType,jdbcType=INTEGER},
-      </if>
-      <if test="lName != null">
-        #{lName,jdbcType=VARCHAR},
-      </if>
-      <if test="lDate != null">
-        #{lDate,jdbcType=DATE},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.qfedu.pojo.Lesson">
-    update lesson
-    <set>
-      <if test="lType != null">
-        l_type = #{lType,jdbcType=INTEGER},
-      </if>
-      <if test="lName != null">
+    <resultMap id="BaseResultMap" type="com.qfedu.pojo.Lesson">
+        <id column="l_id" jdbcType="INTEGER" property="lId"/>
+        <result column="l_type" jdbcType="INTEGER" property="lType"/>
+        <result column="l_name" jdbcType="VARCHAR" property="lName"/>
+        <result column="l_date" jdbcType="DATE" property="lDate"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        l_id, l_type, l_name, l_date
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from lesson
+        where l_id = #{lId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from lesson
+        where l_id = #{lId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.qfedu.pojo.Lesson">
+        insert into lesson (l_id, l_type, l_name,
+        l_date)
+        values (#{lId,jdbcType=INTEGER}, #{lType,jdbcType=INTEGER}, #{lName,jdbcType=VARCHAR},
+        #{lDate,jdbcType=DATE})
+    </insert>
+    <insert id="insertSelective" parameterType="com.qfedu.pojo.Lesson">
+        insert into lesson
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="lId != null">
+                l_id,
+            </if>
+            <if test="lType != null">
+                l_type,
+            </if>
+            <if test="lName != null">
+                l_name,
+            </if>
+            <if test="lDate != null">
+                l_date,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="lId != null">
+                #{lId,jdbcType=INTEGER},
+            </if>
+            <if test="lType != null">
+                #{lType,jdbcType=INTEGER},
+            </if>
+            <if test="lName != null">
+                #{lName,jdbcType=VARCHAR},
+            </if>
+            <if test="lDate != null">
+                #{lDate,jdbcType=DATE},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.qfedu.pojo.Lesson">
+        update lesson
+        <set>
+            <if test="lType != null">
+                l_type = #{lType,jdbcType=INTEGER},
+            </if>
+            <if test="lName != null">
+                l_name = #{lName,jdbcType=VARCHAR},
+            </if>
+            <if test="lDate != null">
+                l_date = #{lDate,jdbcType=DATE},
+            </if>
+        </set>
+        where l_id = #{lId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.qfedu.pojo.Lesson">
+        update lesson
+        set l_type = #{lType,jdbcType=INTEGER},
         l_name = #{lName,jdbcType=VARCHAR},
-      </if>
-      <if test="lDate != null">
-        l_date = #{lDate,jdbcType=DATE},
-      </if>
-    </set>
-    where l_id = #{lId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.qfedu.pojo.Lesson">
-    update lesson
-    set l_type = #{lType,jdbcType=INTEGER},
-      l_name = #{lName,jdbcType=VARCHAR},
-      l_date = #{lDate,jdbcType=DATE}
-    where l_id = #{lId,jdbcType=INTEGER}
-  </update>
+        l_date = #{lDate,jdbcType=DATE}
+        where l_id = #{lId,jdbcType=INTEGER}
+    </update>
+    <select id="findAll" resultType="com.qfedu.vo.VLesson">
+        SELECT
+        l.*, c.c_name cName,
+        c.c_url cUrl
+        FROM
+        lesson l
+        INNER JOIN coach c ON l.l_c_id = c.c_id
+        AND l.l_type = c.c_type
+    </select>
+    <select id="findAllByType" parameterType="int" resultType="com.qfedu.vo.VLesson">
+        SELECT
+        l.*, c.c_name cName,
+        c.c_url cUrl
+        FROM
+        lesson l
+        INNER JOIN coach c ON l.l_c_id = c.c_id
+        where l.l_type = #{type}
+    </select>
 </mapper>

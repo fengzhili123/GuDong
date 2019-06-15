@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>欢迎访问</title>
+    <title>咕咚游泳</title>
     <link rel="stylesheet" href="layui/css/layui.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
@@ -17,6 +17,7 @@
     <script src="https://cdn.bootcss.com/wow/1.1.2/wow.js"></script>
     <script src="js/echarts.common.min.js" type="application/javascript"></script>
     <script src="js/main.js" type="application/javascript"></script>
+    <script src="js/vue.js"></script>
 </head>
 <style type="text/css">
     .carousel-inner img {
@@ -40,14 +41,18 @@
         <!--导航-->
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right" id="nav-home">
-                <li><a href="#home">首页</a></li>
-                <li><a href="#status">馆内状况</a></li>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="#status">馆内时况</a></li>
                 <li><a href="#aboutUs">关于我们</a></li>
-                <li><a href="#app">教练风采</a></li>
+                <li><a href="#coach">教练风采</a></li>
                 <li><a href="#course">游泳培训</a></li>
                 <li><a href="#app">APP</a></li>
+                <li id="news"><a href="#">新闻中心</a></li>
                 <li><a href="#contact">联系我们</a></li>
-                <li><a href="#" onclick="login()">登录 | 注册</a></li>
+                <li><a href="#" id="denglu" onclick="login()">登录 | 注册</a></li>
+                <li id="welUser" style="display: none"><a href="#">你好，{{user.username}}</a></li>
+                <li id="tuichu" style="display: none"><a href="#"><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;退出</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -68,16 +73,16 @@
             <!-- 轮播（Carousel）项目 -->
             <div class="carousel-inner">
                 <div class="item active">
-                    <img  src="image/home-bg.jpg" alt="BG" class="img-responsive" alt="First slide">
+                    <img src="image/home-bg.jpg" alt="BG" class="img-responsive" alt="First slide">
                     <div class="carousel-caption">
-                        <h1  class="wow fadeInUp" data-wow-delay="0.5s">咕咚游泳 尽享游泳乐趣！</h1>
+                        <h1 class="wow fadeInUp" data-wow-delay="0.5s">咕咚游泳 尽享游泳乐趣！</h1>
                         <p class="wow fadeInUp" data-wow-delay="0.5s">
                             我们为追求生活品质和爱好游泳健身的会员提供优质的游泳健身地。咕咚游泳健身，遇见不一样的你。
                         </p>
                     </div>
                 </div>
                 <div class="item">
-                    <img  src="image/home-bg2.jpg" alt="BG" class="img-responsive" alt="Second slide">
+                    <img src="image/home-bg2.jpg" alt="BG" class="img-responsive" alt="Second slide">
                     <div class="carousel-caption">
                         <h1 class="wow fadeInUp" data-wow-delay="0.5s"> 您身边的游泳健身专家</h1>
                         <p class="wow fadeInUp" data-wow-delay="0.5s">
@@ -86,7 +91,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <img  src="image/home-bg3.jpg" alt="BG" class="img-responsive" alt="Third slide">
+                    <img src="image/home-bg3.jpg" alt="BG" class="img-responsive" alt="Third slide">
                     <div class="carousel-caption">
                         <h1 class="wow fadeInUp" data-wow-delay="0.5s"> 运动创造快乐，健康成就未来</h1>
                         <p class="wow fadeInUp" data-wow-delay="0.5s">
@@ -116,7 +121,7 @@
             <div class="col-md-1"></div>
             <div class="col-md-10" style="text-align: center">
                 <p style="font-size: 31px;font-weight: bold">
-                <span class="glyphicon glyphicon-dashboard" style="color: #7d7ea0"></span>&nbsp;&nbsp;场馆开放中
+                    <span class="glyphicon glyphicon-dashboard" style="color: #7d7ea0"></span>&nbsp;&nbsp;场馆开放中
                 </p>
                 <p>
                     营业时间:12:00~18:00冬季
@@ -139,248 +144,297 @@
     </div>
 </section>
 <!--status-->
-    <!--aboutUs-->
-    <section id="aboutUs">
-        <div class="container">
-            <div class="col-md-6 wow fadeInLeft">
-                <h2>
-                    咕咚游泳
-                </h2>
-                <h4>
-                    全方位的游泳俱乐部
-                </h4>
-                <p>
-                    <span class="glyphicon glyphicon-grain mai-icon"></span>咕咚游泳俱乐部是以大众游泳为基础，培训为特色的全方位游泳俱乐部。
-                </p>
-                <p>
-                    <span class="glyphicon glyphicon-grain mai-icon"></span>力争建设成为规模最大化、运营专业化、服务多样化的游泳俱乐部
-                </p>
+<!--aboutUs-->
+<section id="aboutUs">
+    <div class="container">
+        <div class="col-md-6 wow fadeInLeft">
+            <h2>
+                咕咚游泳
+            </h2>
+            <h4>
+                全方位的游泳俱乐部
+            </h4>
+            <p>
+                <span class="glyphicon glyphicon-grain mai-icon"></span>咕咚游泳俱乐部是以大众游泳为基础，培训为特色的全方位游泳俱乐部。
+            </p>
+            <p>
+                <span class="glyphicon glyphicon-grain mai-icon"></span>力争建设成为规模最大化、运营专业化、服务多样化的游泳俱乐部
+            </p>
+        </div>
+        <div class="col-md-6 wow fadeInRight">
+            <img src="image/aboutUs1.png" class="img-responsive" alt="h5">
+        </div>
+    </div>
+</section>
+<!--html5-->
+<!--bootstrap-->
+<section id="bootstrap">
+    <div class="container wow fadeInUp">
+        <div class="col-md-6">
+            <img src="image/aboutUs2.png" class="img-responsive" alt="h5">
+        </div>
+        <div class="col-md-6">
+            <h2>
+                我们的目标
+            </h2>
+            <h4>
+                以游泳产业标准化运营为建设目标
+            </h4>
+            <p>
+                <span class="glyphicon glyphicon-grain mai-icon"></span>以组建高效优秀的团队、推广全民游泳运动
+            </p>
+            <p>
+                <span class="glyphicon glyphicon-grain mai-icon"></span>发现优秀运动苗子、开展多元化游泳业务、提升水立方品牌价值为经营宗旨
+            </p>
+        </div>
+    </div>
+</section>
+<!--bootstrap-->
+<!--coach-->
+<!--轮播图-->
+<section id="coach">
+    <div class="container wow flipInY " data-wow-delay="0.5s">
+        <div class="row-fluid">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <h2>教练风采</h2>
             </div>
-            <div class="col-md-6 wow fadeInRight">
-                <img src="image/aboutUs1.png" class="img-responsive" alt="h5">
+            <div class="col-md-1"></div>
+            <div id="cList">
+                <div v-for="item in infos">
+                    <div class="col-md-4">
+                        <img :src="item.cUrl" alt="" class="img-responsive">
+                        <div class="col-md-6">
+
+                            <h3>{{item.cName}}</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="pull-right" style="margin-top: 30px">{{item.cTypeName}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div><a href="coach.html">查看更多</a></div>
+        </div>
+    </div>
+</section>
+<!--coach-->
+<!--course-->
+<section id="course">
+    <div class="container">
+        <div class="row" data-wow-delay="0.8s">
+            <div class="col-md-12">
+                <h2>最新课程</h2>
+            </div>
+            <div class="col-md-4 wow fadeInLeft" id="adult">
+                <img src="image/adult.jpg" alt="" class="img-responsive">
+                <a href="lesson.html" class="btn btn-default" role="button">成人培训</a>
+                <!--<button class="btn btn-default" onclick="lesson.html"></button>-->
+            </div>
+            <div class="col-md-4 wow fadeInUp" id="child">
+                <img src="image/child.png" alt="" class="img-responsive">
+                <a href="lesson.html" class="btn btn-default" role="button">少儿培训</a>
+                <!--<button class="btn btn-default">少儿培训</button>-->
+            </div>
+            <div class="col-md-4 wow fadeInRight" id="baby">
+                <img src="image/baby.jpg" alt="" class="img-responsive">
+                <a href="lesson.html" class="btn btn-default" role="button">幼儿培训</a>
+                <!--<button class="btn btn-default">幼儿培训</button>-->
             </div>
         </div>
-    </section>
-    <!--html5-->
-    <!--bootstrap-->
-    <section id="bootstrap">
-        <div class="container wow fadeInUp">
+    </div>
+</section>
+<!--course-->
+<!--app-->
+<section id="app">
+    <div class="container">
+        <div class="row wow fadeInUp">
             <div class="col-md-6">
-                <img src="image/aboutUs2.png" class="img-responsive" alt="h5">
+                <h2>
+                    咕咚游泳俱乐部移动APP下载
+                </h2>
+                <p>
+                    全新UI交互，与网站数据同步，更加丰富的课程体验
+                </p>
+                <button class="btn btn-primary">
+                    <span class="glyphicon glyphicon-download-alt"></span>&nbsp;&nbsp;Iphone下载
+                </button>
+                <button class="btn btn-primary">
+                    <span class="glyphicon glyphicon-download-alt"></span>&nbsp;&nbsp;Android下载
+                </button>
             </div>
             <div class="col-md-6">
-                <h2>
-                    我们的目标
-                </h2>
-                <h4>
-                    以游泳产业标准化运营为建设目标
-                </h4>
-                <p>
-                    <span class="glyphicon glyphicon-grain mai-icon"></span>以组建高效优秀的团队、推广全民游泳运动
-                </p>
-                <p>
-                    <span class="glyphicon glyphicon-grain mai-icon"></span>发现优秀运动苗子、开展多元化游泳业务、提升水立方品牌价值为经营宗旨
-                </p>
+                <img src="image/app.jpg" class="img-responsive" alt="app">
             </div>
         </div>
-    </section>
-    <!--bootstrap-->
-    <!--course-->
-    <section id="course">
+    </div>
+</section>
+<!--app-->
+<!--contact-->
+<section id="contact">
+    <div class="lvjing">
         <div class="container">
-            <div class="row wow flipInX" data-wow-delay="0.5s">
-                <div class="col-md-12">
-                    <h2>最新课程</h2>
-                </div>
-                <div class="col-md-12" id="trainBg"></div>
-                <div class="col-md-4 ">
-                    <h1>成人一对一</h1>
-                    <h3>2019年培训人数：24</h3>
-                    <p>售价：2480</p>
-                </div>
-                <div class="col-md-4">
-                    <h1>成人一对二</h1>
-                    <h3>2019年培训人数：24</h3>
-                    <p>售价：2480</p>
-                </div>
-                <div class="col-md-4">
-                    <h1>成人团体培训课</h1>
-                    <h3>2019年培训人数：24</h3>
-                    <p>售价：2480</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--course-->
-    <!--app-->
-    <section id="app">
-        <div class="container">
-            <div class="row wow fadeInUp">
-                <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6 wow fadeInLeft">
                     <h2>
-                        咕咚游泳俱乐部移动APP下载
+                        <span class="glyphicon glyphicon-send"></span>
+                        &nbsp;
+                        联系我们
                     </h2>
                     <p>
-                        全新UI交互，与网站数据同步，更加丰富的课程体验
+                        咕咚游泳成立于2019年二月25号
                     </p>
-                    <button class="btn btn-primary">
-                        <span class="glyphicon glyphicon-download-alt"></span>&nbsp;&nbsp;Iphone下载
-                    </button>
-                    <button class="btn btn-primary">
-                        <span class="glyphicon glyphicon-download-alt"></span>&nbsp;&nbsp;Android下载
-                    </button>
-                </div>
-                <div class="col-md-6">
-                    <img src="image/app.jpg" class="img-responsive" alt="app">
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--app-->
-    <!--contact-->
-    <section id="contact">
-        <div class="lvjing">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 wow fadeInLeft">
-                        <h2>
-                            <span class="glyphicon glyphicon-send"></span>
+                    <address>
+                        <p><span class="glyphicon glyphicon-home"></span>&nbsp;
+                            地址：郑州千峰</p>
+                        <p><span class="glyphicon glyphicon-phone-alt"></span>
                             &nbsp;
-                            联系我们
-                        </h2>
-                        <p>
-                            咕咚游泳成立于2019年二月25号
-                        </p>
-                        <address>
-                            <p><span class="glyphicon glyphicon-home"></span>&nbsp;
-                                地址：郑州千峰</p>
-                            <p><span class="glyphicon glyphicon-phone-alt"></span>
-                                &nbsp;
-                                联系电话：432243212</p>
-                            <p><span class="glyphicon glyphicon-envelope"></span>
-                                &nbsp;
-                                邮箱：dsfds@dqq.com</p>
-                        </address>
-                    </div>
-                    <div class="col-md-6 wow fadeInRight">
-                        <form action="">
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="您的姓名">
-                            </div>
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" placeholder="您的邮箱">
-                            </div>
-                            <div class="col-md-12">
-                                <input class="form-control" placeholder="标题">
-                            </div>
-                            <div class="col-md-12">
-                                <textarea class="form-control" placeholder="留言内容" rows="5"></textarea>
-                            </div>
-                            <div class="col-md-8">
-                                <input type="submit" class="form-control" value="提交">
-                            </div>
-                        </form>
-                    </div>
+                            联系电话：432243212</p>
+                        <p><span class="glyphicon glyphicon-envelope"></span>
+                            &nbsp;
+                            邮箱：dsfds@dqq.com</p>
+                    </address>
+                </div>
+                <div class="col-md-6 wow fadeInRight">
+                    <form action="">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" placeholder="您的姓名">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="email" class="form-control" placeholder="您的邮箱">
+                        </div>
+                        <div class="col-md-12">
+                            <input class="form-control" placeholder="标题">
+                        </div>
+                        <div class="col-md-12">
+                            <textarea class="form-control" placeholder="留言内容" rows="5"></textarea>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="submit" class="form-control" value="提交" id="contactUs">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
-    <!--contact-->
-    <!--footer-->
-    <footer>
-        <div class="container-fluid">
+    </div>
+</section>
+<!--contact-->
+<!--footer-->
+<footer>
+    <div class="container-fluid">
 
-        </div>
-    </footer>
-    <!--footer-->
-    <script>
-        $(function () {
-            //导航跳转效果插件
-            $(".nav").singlePageNav({
-                offset: 70
-            });
-            //小屏幕导航点击菜单
-            $(".navbar-collapse a").click(function () {
-                $(".navbar-collapse").collapse("hide");
-            })
-            new WOW().init();
-            $('#myCarousel').carousel({
-                interval: 5000
-            })
-            chart(); //图表
+    </div>
+</footer>
+<!--footer-->
+<script type="application/javascript">
+    //vue
+    var welUser = new Vue({
+        el: "#welUser",
+        data: {
+            user: {}
+        },
+    });
+    var cList = new Vue({
+        el: "#cList",
+        data: {
+            infos: {}
+        }
+    });
+
+    $(function () {
+        ajaxLimit();
+        welcome();
+        loadData();
+    });
+    //点击事件
+    $("#tuichu").click(function () {
+        $.ajax({
+            type: "get",
+            url: "/gudong/out.do",
+            dataType: "json",
+            success: function (data) {
+                alert(data.info)
+                location.reload();
+            }
         })
-        layui.use(['layer','form'], function(){
-            var layer = layui.layer;
-            var form = layui.form;
-        });
-        function  login() {
-            layer.open({
-                title: ['用户登录'],
-                area: 'auto',
-                type: 1,
-                content: $('#formLogin')
-            });
-        }
-        function register(){
-            layer.open({
-                title: ['用户注册'],
-                area: 'auto',
-                type: 1,
-                content: $('#formRegister')
-            });
-        }
-    </script>
-</body>
-</html>
-<form class="layui-form" id="formLogin" style="display: none">
+    });
+    $("#contactUs").click(function () {
+        alert("哪那么多事")
+    });
+    $("#news").click(function () {
+        window.location.href = "index2.html"
+    });
+    $("#forget").click(function () {
+        alert("忘了，就算了吧！")
+    });
+
+
+</script>
+<form class="layui-form" id="formLogin" style="display: none" onsubmit="return false">
     <div class="layui-form-item">
         <label class="layui-form-label">用户名</label>
         <div class="layui-input-inline">
-            <input type="text" name="title" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+            <input type="text" name="username" required lay-verify="required" placeholder="请输入用户名" autocomplete="off"
+                   class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label" style="margin-bottom: 10px">密码框</label>
         <div class="layui-input-inline">
-            <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+            <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off"
+                   class="layui-input">
         </div>
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
     <div class="layui-form-item" style="margin: 10px">
         <div class="layui-input-block" style=" margin-left: 65px; margin-bottom: 10px">
-            <button class="layui-btn" lay-submit lay-filter="formDemo">立即登录</button>
+            <button class="layui-btn" lay-submit lay-filter="formDemo" onclick="javascript:login1()">立即登录</button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
 
         </div>
         <div class="col-md-6" style="text-align: center"><a href="javascript:register()">注册</a></div>
-        <div class="col-md-6"><a href="" style="text-align: center">忘记密码？</a></div>
+        <div class="col-md-6"><a href="#" style="text-align: center" id="forget">忘记密码？</a></div>
     </div>
 </form>
-<form class="layui-form" id="formRegister" style="display: none">
+<form class="layui-form" id="formRegister" style="display: none" onsubmit="return false;">
     <div class="layui-form-item">
         <label class="layui-form-label">注册用户名</label>
         <div class="layui-input-inline">
-            <input type="text" name="title" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+            <input type="text" name="username" required lay-verify="required" placeholder="请输入用户名" autocomplete="off"
+                   class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label" style="margin-bottom: 10px">密码</label>
         <div class="layui-input-inline">
-            <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+            <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off"
+                   class="layui-input">
         </div>
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label" style="margin-bottom: 10px">确认密码</label>
         <div class="layui-input-inline">
-            <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+            <input type="password" name="repassword" required lay-verify="required" placeholder="请输入密码"
+                   autocomplete="off"
+                   class="layui-input">
+        </div>
+        <div class="layui-form-mid layui-word-aux"></div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="margin-bottom: 10px">手机号</label>
+        <div class="layui-input-inline">
+            <input type="text" name="phone" required lay-verify="required" placeholder="请输入手机号" autocomplete="off"
+                   class="layui-input">
         </div>
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
     <div class="layui-form-item" style="margin: 10px">
         <div class="layui-input-block" style=" margin-left: 65px; margin-bottom: 10px">
-            <button class="layui-btn" lay-submit lay-filter="formDemo">立即注册</button>
+            <button class="layui-btn" lay-submit lay-filter="formDemo" onclick="register1()">立即注册</button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
         </div>
     </div>
 </form>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>欢迎访问</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main2.css">
+    <link href="css/pagination.css" rel="stylesheet" type="text/css"/>
+    <script src="js/jquery-1.12.2.min.js" type="application/javascript"></script>
+    <script src="js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="layui/layui.js" type="application/javascript"></script>
+    <script type="text/javascript" src="js/jquery.pagination.js"></script>
+    <script src="js/news.js"></script>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<!--导航-->
+<nav class="navbar navbar-default">
+    <div class="container">
+        <!--小屏幕导航按纽和logo-->
+        <div class="navbar-header">
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <img src="image/logo.jpg" class="img-responsive img-logo">
+        </div>
+
+        <!--导航-->
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right" id="nav-home">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="index.html">馆内状况</a></li>
+                <li><a href="index.html">关于我们</a></li>
+                <li><a href="index.html">教练风采</a></li>
+                <li><a href="index.html">游泳培训</a></li>
+                <li><a href="index.html">APP</a></li>
+                <li class="active"><a href="news.html">新闻中心</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--导航-->
+<!--警告框-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">新闻热帖</div>
+                <ul class="list-group" id="newsPage">
+                    <div v-for="item in news">
+                        <li class="list-group-item">
+                            <a href="index.html">
+                                <span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;{{item.newsTitle}}
+                                <small class="pull-right">{{item.newsDate}}</small>
+                            </a>
+                        </li>
+                    </div>
+                </ul>
+                <div class="M-box3" style="margin:10px auto;"></div>
+                <div class="curPage" style="width: 40px; height: 40px; float: left;"></div>
+                <div class="currentPage" style="display:none;">1</div>
+            </div>
+        </div>
+        <!--留言板-->
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="text-align: center; font-weight: bold">新闻热评</div>
+                <div class="panel-body">
+                    <div class="col-md-12">
+                        <form action="#">
+                            <div class="form-group">
+                                <label for="text1" style="text-align: center">输入内容</label>
+                                <textarea class="form-control" id="text1" cols="10" rows="5"
+                                          placeholder="请输入内容"></textarea>
+                                <button type="submit" class="btn btn-default mar_t15">评论</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--留言板-->
+    </div>
+</div>
+<!--警告框-->
+
+
+<!--footer-->
+<footer>
+    <div class="container-fluid">
+
+    </div>
+</footer>
+<!--footer-->
+</body>
+<script>
+    var newsPage = new Vue({
+        el: "#newsPage",
+        data: {
+            news: {}
+        }
+    })
+    $(function () {
+        newsLoadData(1)
+    })
+</script>
+</html>

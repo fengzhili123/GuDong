@@ -1,48 +1,58 @@
-body{
+body {
     font-family: 幼圆;
     padding-bottom: 50px;
 }
+
 /*进度条*/
 .progress {
     margin-bottom: 50px;
 }
+
 /*头像*/
-.wh64{
-    width:64px;
+.wh64 {
+    width: 64px;
     height: 64px;
     border-radius: 50%;
 }
+
 /*边距*/
-.mar_t15{
+.mar_t15 {
     margin-top: 15px;
 }
+
 /*padding*/
-.pad0{
+.pad0 {
     padding: 0;
 }
+
 /*page-header*/
-.page-header{
+.page-header {
     margin-top: 0;
 }
-.page-header h1{
+
+.page-header h1 {
     margin: 0;
     font-size: 16px;
 }
+
 /*search*/
-.user_search{
+.user_search {
     padding: 10px;
     border: solid 1px #ddd;
     border-top: none;
 }
+
 /*tag*/
-.taglist{
+.taglist {
     padding-top: 15px;
 }
-.taglist .alert{
+
+.taglist .alert {
     margin: 0 15px 15px 0;
 }
+
 /*footer*/
-footer{
+footer {
     font-weight: 400;
     text-align: center;
     padding: 10px;
