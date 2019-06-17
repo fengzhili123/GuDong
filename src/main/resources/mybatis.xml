@@ -24,7 +24,7 @@
         alias 别名
     -->
     <typeAliases>
-        <typeAlias type="com.qfedu.pojo.User" alias="User"></typeAlias>
+        <typeAlias type="com.feng.pojo.User" alias="User"></typeAlias>
     </typeAliases>
 
     <plugins>

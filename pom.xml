@@ -171,17 +171,6 @@
         </resources>
 
         <plugins>
-            <!-- tomcat插件 -->
-            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    <uriEncoding>UTF-8</uriEncoding>
-                    <!-- 指定web应用的路径 -->
-                    <path>/gudong</path>
-                </configuration>
-            </plugin>
             <!-- 编译插件 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
